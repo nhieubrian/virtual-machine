@@ -27,7 +27,7 @@ spec:
         - name: SIZEW
           value: "1920"
         - name: SIZEH
-          value: "1080"
+          value: "1200"
         - name: CDEPTH
           value: "24"
         - name: SHARED
