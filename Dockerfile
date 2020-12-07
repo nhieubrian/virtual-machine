@@ -1,4 +1,4 @@
-FROM ubuntu:20.04
+FROM ubuntu:18.04
 
 # Based on https://github.com/ryought/glx-docker-headless-gpu/blob/master/Dockerfile
 LABEL maintainer "https://github.com/ehfd"
