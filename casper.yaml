@@ -1,0 +1,81 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: casper
+  namespace: xilinx-dev
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: casper
+  template:
+    metadata:
+      labels:
+        app: casper
+    spec:
+      hostname: casper
+      containers:
+      - name: casper
+        image: gitlab-registry.nautilus.optiputer.net/xilinx-dev/casper:latest
+        env:
+        - name: TZ
+          value: "America/Los_Angeles"
+        - name: NETWORKING
+          value: "yes"
+        - name: container
+          value: "docker"
+        - name: SIZEW
+          value: "1920"
+        - name: SIZEH
+          value: "1080"
+        - name: CDEPTH
+          value: "24"
+        - name: SHARED
+          value: "TRUE"
+        - name: VNCPASS
+          value: "foofoofoo"
+#          valueFrom:
+#            secretKeyRef:
+#              name: egl-pass
+#              key: egl-pass
+        securityContext:
+          privileged: true
+        stdin: true
+        tty: true
+        ports:
+          - containerPort: 5901
+            protocol: TCP
+        resources:
+          limits:
+#            nvidia.com/gpu: 1
+            memory: "32Gi"
+            cpu: "4"
+          requests:
+            memory: "32Gi"
+            cpu: "4"
+#        command: ["bash", "-c"]
+#        args: ["sleep infinity"]
+        volumeMounts:
+        - mountPath: /cache
+          name: casper-cache-vol
+        - mountPath: /home/user
+          name: casper-root-vol
+        - mountPath: /dev/shm
+          name: dshm
+        - mountPath: /dev/tty0
+          name: tty
+      volumes:
+        - name: casper-cache-vol
+          emptyDir: {}
+#          persistentVolumeClaim:
+#            claimName: egl-cache-vol
+        - name: casper-root-vol
+          emptyDir: {}
+#          persistentVolumeClaim:
+#            claimName: egl-root-vol
+        - name: dshm
+          emptyDir:
+            medium: Memory
+        - name: tty
+          hostPath:
+            path: /dev/tty0
