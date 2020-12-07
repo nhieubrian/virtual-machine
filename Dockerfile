@@ -156,10 +156,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     chown -R user:user /home/user/ && \
     rm -rf /var/lib/apt/lists/*
 
-RUN add-apt-repository universe && \
-    apt update && \
-    apt install python2 && \
-    curl https://bootstrap.pypa.io/get-pip.py --output get-pip.py && \
+RUN curl https://bootstrap.pypa.io/get-pip.py --output get-pip.py && \
     python2 get-pip.py
 
 RUN git clone https://github.com/casper-astro/casperfpga && \
