@@ -47,7 +47,7 @@ spec:
             protocol: TCP
         resources:
           limits:
-#            nvidia.com/gpu: 1
+            nvidia.com/gpu: 1
             memory: "32Gi"
             cpu: "4"
           requests:
