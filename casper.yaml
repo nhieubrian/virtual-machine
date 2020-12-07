@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: casper
-  namespace: xilinx-dev
+  namespace: casper
 spec:
   replicas: 1
   selector:
