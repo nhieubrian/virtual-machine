@@ -21,7 +21,7 @@ RUN curl https://nextcloud.nautilus.optiputer.net/s/BeeFrHF9cKGYQzm/download --o
 #    curl https://nextcloud.nautilus.optiputer.net/s/dpw2YtjXRFpeGyr/download --output Xilinx_Vivado_Vitis_Update_2020.2.1_1211_2237.tar.gz && \
 #    curl https://nextcloud.nautilus.optiputer.net/s/iZYcCo5wWeP33SY/download --output Xilinx_Unified_2020.2_1118_1232_Lin64.bin && \
 #    apt install -y ./xrt*.deb --no-install-recommends && rm -rf *.deb && \
-#    rm -rf /var/lib/apt/lists/*
+    rm -rf /var/lib/apt/lists/*
 
 RUN git clone https://github.com/casper-astro/casperfpga && \
     cd casperfpga  && \
