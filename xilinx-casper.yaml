@@ -1,22 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: casper
+  name: xilinx-casper
   namespace: casper
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: casper
+      app: xilinx-casper
   template:
     metadata:
       labels:
-        app: casper
+        app: xilinx-casper
     spec:
-      hostname: casper
+      hostname: xilinx-casper
       containers:
-      - name: casper
-        image: gitlab-registry.nautilus.optiputer.net/xilinx-dev/casper:latest
+      - name: xilinx-casper
+        image: gitlab-registry.nautilus.optiputer.net/casper/xilinx-casper:latest
         env:
         - name: TZ
           value: "America/Los_Angeles"
@@ -33,11 +33,11 @@ spec:
         - name: SHARED
           value: "TRUE"
         - name: VNCPASS
-          value: "foofoofoo"
+          value: "vncpasswd"
 #          valueFrom:
 #            secretKeyRef:
-#              name: egl-pass
-#              key: egl-pass
+#              name: xilinx-casper-egl-pass
+#              key: xilinx-caser-egl-pass
         securityContext:
           privileged: true
         stdin: true
@@ -53,8 +53,6 @@ spec:
           requests:
             memory: "32Gi"
             cpu: "4"
-#        command: ["bash", "-c"]
-#        args: ["sleep infinity"]
         volumeMounts:
         - mountPath: /cache
           name: casper-cache-vol
