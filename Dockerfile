@@ -6,11 +6,11 @@ RUN curl https://bootstrap.pypa.io/pip/2.7/get-pip.py  --output get-pip.py && \
 
 RUN  apt-get update && apt-get install -y --no-install-recommends dkms uuid-dev \
      ocl-icd-opencl-dev \
-     libboost-filesystem1 \
-     libboost-program-options1 \
-     libboost-system1 \
-     libncurses5 \
-     libprotobuf10 \
+#     libboost-filesystem1 \
+#     libboost-program-options1 \
+#     libboost-system1 \
+#     libncurses5 \
+#     libprotobuf10 \
      libtinfo5
 
 WORKDIR /xilinx
