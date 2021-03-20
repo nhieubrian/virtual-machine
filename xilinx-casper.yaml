@@ -48,8 +48,8 @@ spec:
           capabilities:
             add: ["NET_ADMIN"]
 #          privileged: true
-        stdin: true
-        tty: true
+#        stdin: true
+#        tty: true
         ports:
           - containerPort: 5901
             protocol: TCP
@@ -66,8 +66,8 @@ spec:
           name: xilinx-casper-root-vol
         - mountPath: /dev/shm
           name: dshm
-        - mountPath: /dev/tty0
-          name: tty
+#        - mountPath: /dev/tty0
+#          name: tty
       volumes:
         - name: xilinx-casper-root-vol
           persistentVolumeClaim:
@@ -75,6 +75,6 @@ spec:
         - name: dshm
           emptyDir:
             medium: Memory
-        - name: tty
-          hostPath:
-            path: /dev/tty0
+#        - name: tty
+#          hostPath:
+#            path: /dev/tty0
