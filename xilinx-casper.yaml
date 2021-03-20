@@ -13,6 +13,12 @@ spec:
       labels:
         app: xilinx-casper
     spec:
+      nodeSelector:
+        nautilus.io/nogl: nogl
+      tolerations: 
+        - key: nautilus.io/suncave
+          effect: NoSchedule
+          operator: Exists
       hostname: xilinx-casper
       containers:
       - name: xilinx-casper
@@ -39,7 +45,9 @@ spec:
 #              name: xilinx-casper-egl-pass
 #              key: xilinx-caser-egl-pass
         securityContext:
-          privileged: true
+          capabilities:
+            add: ["NET_ADMIN"]
+#          privileged: true
         stdin: true
         tty: true
         ports:
