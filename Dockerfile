@@ -13,12 +13,6 @@ RUN  apt-get update && apt-get install -y --no-install-recommends dkms uuid-dev 
      libprotobuf10 \
      libtinfo5
 
-xrt : Depends: libboost-filesystem1.65.1 but it is not installable
-       Depends: libboost-program-options1.65.1 but it is not installable
-       Depends: libboost-system1.65.1 but it is not installable
-       Depends: libprotobuf10 but it is not installable
-
-
 WORKDIR /xilinx
 
 RUN curl https://nextcloud.nautilus.optiputer.net/s/BeeFrHF9cKGYQzm/download --output xrt_202020.2.8.743_18.04-amd64-xrt.deb && \
