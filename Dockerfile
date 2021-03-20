@@ -1,6 +1,6 @@
 FROM gitlab-registry.nautilus.optiputer.net/prp/docker-nvidia-egl-desktop:latest
 
-RUN curl https://bootstrap.pypa.io/get-pip.py --output get-pip.py && \
+RUN curl ttps://bootstrap.pypa.io/pip/2.7/get-pip.py  --output get-pip.py && \
     python2 get-pip.py
 
 RUN git clone https://github.com/casper-astro/casperfpga && \
