@@ -1,6 +1,10 @@
 FROM gitlab-registry.nautilus.optiputer.net/prp/docker-nvidia-egl-desktop-18.04:latest
 
 USER root
+
+RUN curl https://raw.githubusercontent.com/Xilinx/XRT/2019.1/src/runtime_src/tools/scripts/xrtdeps.sh --output xrtdeps.sh && \
+    chmod 755 xrtdeps.sh && ./xrtdeps.sh
+
 RUN curl https://bootstrap.pypa.io/pip/2.7/get-pip.py  --output get-pip.py && \
     python2 get-pip.py
 
