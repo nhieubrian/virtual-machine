@@ -1,4 +1,4 @@
-image: gcr.io/kaniko-project/executor:debug-v0.24.0
+image: gcr.io/kaniko-project/executor:debug
    
 stages:
   - build-and-push
