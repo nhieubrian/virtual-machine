@@ -2,30 +2,30 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: casper
+  name: xilinx-casper
   namespace: casper
   labels:
-    app: casper
+    app: xilinx-casper
 spec:
   selector:
-    app: casper
+    app: xilinx-casper
   ports:
-  - name: casper
+  - name: xilinx-casper
     protocol: TCP
     port: 5901
 ---
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
-  name: casper-ingress
+  name: xilinx-casper-ingress
   namespace: casper
   annotations:
     traefik.ingress.kubernetes.io/router.tls: ""
 spec:
   rules:
-  - host: casper.nautilus.optiputer.net
+  - host: xilinx-casper.nautilus.optiputer.net
     http:
       paths:
       - backend:
-          serviceName: casper
+          serviceName: xilinx-casper
           servicePort: 5901
