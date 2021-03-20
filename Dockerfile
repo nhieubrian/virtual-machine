@@ -15,7 +15,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libtinfo5 \
     libsm6 \
     libxv1 \
-    libxv1:i386 \
+    libxv1:i386
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
     dbus-x11 \
