@@ -54,23 +54,16 @@ spec:
             memory: "32Gi"
             cpu: "4"
         volumeMounts:
-        - mountPath: /cache
-          name: casper-cache-vol
         - mountPath: /home/user
-          name: casper-root-vol
+          name: xilinx-casper-root-vol
         - mountPath: /dev/shm
           name: dshm
         - mountPath: /dev/tty0
           name: tty
       volumes:
-        - name: casper-cache-vol
-          emptyDir: {}
-#          persistentVolumeClaim:
-#            claimName: egl-cache-vol
-        - name: casper-root-vol
-          emptyDir: {}
-#          persistentVolumeClaim:
-#            claimName: egl-root-vol
+        - name: xilinx-casper-root-vol
+          persistentVolumeClaim:
+            claimName: xilinx-casper-root-vol
         - name: dshm
           emptyDir:
             medium: Memory
