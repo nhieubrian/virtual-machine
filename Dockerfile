@@ -14,6 +14,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libboost-filesystem1.65.1 \
     libboost-program-options1.65.1 \
     libboost-system1.65.1 \
+    libboost-dev
     libncurses5 \
     libprotobuf10 \
     libtinfo5 \
@@ -23,14 +24,16 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
     dbus-x11 \
-    libdbus-c++-1-0v5 && \
-    rm -rf /var/lib/apt/lists/*
+    libdbus-c++-1-0v5
 
 WORKDIR /tools
-#RUN curl https://nextcloud.nautilus.optiputer.net/s/BeeFrHF9cKGYQzm/download --output xrt_202020.2.8.743_18.04-amd64-xrt.deb && \
-#    curl https://nextcloud.nautilus.optiputer.net/s/dL6nW4zgHCzA76Q/download --output xilinx-u200-xdma-201830.2-dev-2580015_18.04.deb && \
-#    curl https://nextcloud.nautilus.optiputer.net/s/2CdEXBSFe5o32aR/download --output xilinx-u200-xdma-201830.2-2580015_18.04.deb && \
-#    apt install -y ./xrt*.deb --no-install-recommends && rm -rf *.deb && \
+RUN curl https://nextcloud.nautilus.optiputer.net/s/yLSs43Dyps6XPMq/download --output xilinx-u200-xdma-201830.2-dev-2580015_18.04.deb && \
+    curl https://nextcloud.nautilus.optiputer.net/s/s8EjqqWfMkWoQYs/download --output xilinx-u200-xdma-201830.2-2580015_18.04.deb && \
+    curl https://nextcloud.nautilus.optiputer.net/s/YXjktibxG9tRGFj/download --output xrt_201910.2.2.2250_18.04-xrt.deb && \
+    apt install -y ./xrt*.deb --no-install-recommends && \
+    rm -rf *.deb && \
+    rm -rf /var/lib/apt/lists/*
+
 #    curl https://nextcloud.nautilus.optiputer.net/s/gX5So7L9E2bPzyH/download --output R2019a_Linux.iso && \
 #    curl https://nextcloud.nautilus.optiputer.net/s/fp7wzWo9HWP99Kp/download --output network.lib && \
 #    curl https://nextcloud.nautilus.optiputer.net/s/6sG9cemHwAz3PJd/download --output FIK.txt && \
