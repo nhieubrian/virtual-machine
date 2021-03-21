@@ -14,7 +14,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libboost-filesystem1.65.1 \
     libboost-program-options1.65.1 \
     libboost-system1.65.1 \
-    libboost-dev
+    libboost-dev \
     libncurses5 \
     libprotobuf10 \
     libtinfo5 \
