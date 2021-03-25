@@ -15,6 +15,7 @@ spec:
     spec:
       nodeSelector:
         nautilus.io/nogl: nogl
+        kubernetes.io/hostname: suncave-20
       tolerations: 
         - key: nautilus.io/suncave
           effect: NoSchedule
