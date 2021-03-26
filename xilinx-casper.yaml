@@ -13,13 +13,14 @@ spec:
       labels:
         app: xilinx-casper
     spec:
-      nodeSelector:
-        nautilus.io/nogl: nogl
-        kubernetes.io/hostname: suncave-20
-      tolerations: 
-        - key: nautilus.io/suncave
-          effect: NoSchedule
-          operator: Exists
+      tolerations:
+      - key: "region"
+        operator: "Equal"
+        value: "allow"
+        effect: "NoSchedule"
+      - key: "nautilus.io/oldkernel"
+        operator: "Exists"
+        effect: "NoSchedule"
       hostname: xilinx-casper
       containers:
       - name: xilinx-casper
@@ -56,7 +57,7 @@ spec:
             protocol: TCP
         resources:
           limits:
-            nvidia.com/gpu: 1
+            xilinx.com/fpga-xilinx_u200_xdma_201830_1-1542252769: 1
             memory: "32Gi"
             cpu: "4"
           requests:
