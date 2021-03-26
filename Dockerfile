@@ -16,9 +16,9 @@ RUN wget -O xrt_201910.2.2.2250_7.4.1708-xrt.rpm https://nextcloud.nautilus.opti
     
 RUN yum clean all && yum -y install xrt_201910.2.2.2250_7.4.1708-xrt.rpm \
     xilinx-u200-xdma-201830.2-2580015.x86_64.rpm \
-    xilinx-u200-xdma-dev-201830.2-2580015.x86_64.rpm && \
-    rm -rf xrt_201910.2.2.2250_7.4.1708-xrt.rpm \
-    xilinx-u200-xdma-201830.2-2580015.x86_64.rpm \
     xilinx-u200-xdma-dev-201830.2-2580015.x86_64.rpm
+#RUN rm -rf xrt_201910.2.2.2250_7.4.1708-xrt.rpm \
+#    xilinx-u200-xdma-201830.2-2580015.x86_64.rpm \
+#    xilinx-u200-xdma-dev-201830.2-2580015.x86_64.rpm
 
 USER user
