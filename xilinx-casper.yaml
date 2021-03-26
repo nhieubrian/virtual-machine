@@ -57,7 +57,7 @@ spec:
             protocol: TCP
         resources:
           limits:
-            xilinx.com/fpga-xilinx_u200_xdma_201830_1-1542252769: 1
+            xilinx.com/fpga-xilinx_u200_xdma_201830_2-1561465320: 1
             memory: "32Gi"
             cpu: "4"
           requests:
