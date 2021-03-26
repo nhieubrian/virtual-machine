@@ -45,5 +45,5 @@ RUN git clone https://github.com/casper-astro/casperfpga && \
     pip install -r requirements.txt && \
     pip install casperfpga
 
-USER user
+#USER user
 WORKDIR /home/user
