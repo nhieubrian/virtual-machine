@@ -58,10 +58,10 @@ spec:
         resources:
           limits:
             xilinx.com/fpga-xilinx_u200_xdma_201830_2-1561465320: 1
-            memory: "32Gi"
+            memory: "16Gi"
             cpu: "4"
           requests:
-            memory: "32Gi"
+            memory: "16Gi"
             cpu: "4"
         volumeMounts:
         - mountPath: /home/user
