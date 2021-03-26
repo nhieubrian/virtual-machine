@@ -34,6 +34,11 @@ RUN curl https://nextcloud.nautilus.optiputer.net/s/yLSs43Dyps6XPMq/download --o
     rm -rf *.deb && \
     rm -rf /var/lib/apt/lists/*
 
+RUN wget -O install_drivers.tar https://nextcloud.nautilus.optiputer.net/s/SNoy7F6TXF4prF9/download && \
+    tar -xvf install_drivers.tar && \
+    cd install_drivers && \
+    ./install_drivers
+
 #    curl https://nextcloud.nautilus.optiputer.net/s/gX5So7L9E2bPzyH/download --output R2019a_Linux.iso && \
 #    curl https://nextcloud.nautilus.optiputer.net/s/fp7wzWo9HWP99Kp/download --output network.lib && \
 #    curl https://nextcloud.nautilus.optiputer.net/s/6sG9cemHwAz3PJd/download --output FIK.txt && \
