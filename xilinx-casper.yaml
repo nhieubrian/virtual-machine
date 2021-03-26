@@ -41,11 +41,11 @@ spec:
         - name: SHARED
           value: "TRUE"
         - name: VNCPASS
-          value: "vncpasswd"
-#          valueFrom:
-#            secretKeyRef:
-#              name: xilinx-casper-egl-pass
-#              key: xilinx-caser-egl-pass
+#          value: "vncpasswd"
+          valueFrom:
+            secretKeyRef:
+              name: xilinx-casper-egl-pass
+              key: xilinx-caser-egl-pass
         securityContext:
           capabilities:
             add: ["NET_ADMIN"]
