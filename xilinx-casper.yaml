@@ -59,9 +59,11 @@ spec:
             xilinx.com/fpga-xilinx_u200_xdma_201830_2-1561465320: 1
             memory: "32Gi"
             cpu: "16"
+            ephemeral-storage: 32Gi
           requests:
             memory: "32Gi"
             cpu: "16"
+            ephemeral-storage: 32Gi
         volumeMounts:
         - mountPath: /home/user
           name: xilinx-casper-root-vol
