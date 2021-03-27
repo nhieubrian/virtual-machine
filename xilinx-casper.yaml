@@ -45,7 +45,7 @@ spec:
           valueFrom:
             secretKeyRef:
               name: xilinx-casper-egl-pass
-              key: xilinx-caser-egl-pass
+              key: xilinx-casper-egl-pass
         securityContext:
           capabilities:
             add: ["NET_ADMIN"]
