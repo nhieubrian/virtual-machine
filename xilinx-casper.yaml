@@ -41,7 +41,6 @@ spec:
         - name: SHARED
           value: "TRUE"
         - name: VNCPASS
-#          value: "vncpasswd"
           valueFrom:
             secretKeyRef:
               name: xilinx-casper-egl-pass
@@ -58,11 +57,11 @@ spec:
         resources:
           limits:
             xilinx.com/fpga-xilinx_u200_xdma_201830_2-1561465320: 1
-            memory: "16Gi"
-            cpu: "4"
+            memory: "32Gi"
+            cpu: "16"
           requests:
-            memory: "16Gi"
-            cpu: "4"
+            memory: "32Gi"
+            cpu: "16"
         volumeMounts:
         - mountPath: /home/user
           name: xilinx-casper-root-vol
