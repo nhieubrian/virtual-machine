@@ -49,8 +49,6 @@ spec:
           capabilities:
             add: ["NET_ADMIN"]
 #          privileged: true
-#        stdin: true
-#        tty: true
         ports:
           - containerPort: 5901
             protocol: TCP
@@ -67,17 +65,23 @@ spec:
         volumeMounts:
         - mountPath: /home/user
           name: xilinx-casper-root-vol
+        - mountPath: /matlab
+          name: xilinx-casper-matlab-vol
+        - mountPath: /tools
+          name: xilinx-casper-tools-vol
         - mountPath: /dev/shm
           name: dshm
-#        - mountPath: /dev/tty0
-#          name: tty
       volumes:
         - name: xilinx-casper-root-vol
           persistentVolumeClaim:
             claimName: xilinx-casper-root-vol
+        - name: xilinx-casper-matlab-vol
+          persistentVolumeClaim:
+            claimName: xilinx-casper-matlab-vol
+        - name: xilinx-casper-tools-vol
+          persistentVolumeClaim:
+            claimName: xilinx-casper-tools-vol
         - name: dshm
           emptyDir:
             medium: Memory
-#        - name: tty
-#          hostPath:
-#            path: /dev/tty0
+
