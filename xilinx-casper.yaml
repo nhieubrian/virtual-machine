@@ -65,7 +65,7 @@ spec:
         volumeMounts:
         - mountPath: /home/user
           name: xilinx-casper-root-vol
-        - mountPath: /matlab
+        - mountPath: /usr/local/MATLAB
           name: xilinx-casper-matlab-vol
         - mountPath: /tools
           name: xilinx-casper-tools-vol
