@@ -34,7 +34,7 @@ spec:
           volumeMounts:
           - mountPath: /home/user
             name: casper-1-root-vol
-      restartPolicy: Never
+#      restartPolicy: Always
       containers:
       - name: casper-1
         image: gitlab-registry.nautilus.optiputer.net/casper/xilinx-casper:latest
@@ -70,14 +70,13 @@ spec:
           limits:
             #xilinx.com/fpga-xilinx_u200_xdma_201830_2-1561465320: 1
             nvidia.com/gpu: 1
-            memory: "8Gi"
-            cpu: "5"
-            ephemeral-storage: 8Gi
+            memory: "32Gi"
+            cpu: "4"
+            ephemeral-storage: 16Gi
           requests:
-            nvidia.com/gpu: 1
-            memory: "8Gi"
-            cpu: "5"
-            ephemeral-storage: 8Gi
+            memory: "32Gi"
+            cpu: "6"
+            ephemeral-storage: 16Gi
         volumeMounts:
         - mountPath: /home/user
           name: casper-1-root-vol
