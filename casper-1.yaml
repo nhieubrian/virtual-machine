@@ -30,7 +30,7 @@ spec:
           name: clone
           image: alpine:3.7
           command: ["/bin/sh","-c"]
-          args: ['apk add --no-cache git && git clone https://github.com/casper-astro/mlib_devel /home/user/mlib_devel && cd /home/user/mlib_devel && git checkout m2019a && pip3 install -r requirements.txt']
+          args: ['apk add --no-cache py3-pip git xn&& git clone https://github.com/casper-astro/mlib_devel /home/user/mlib_devel && cd /home/user/mlib_devel && git checkout m2019a && pip3 install -r requirements.txt']
           volumeMounts:
           - mountPath: /home/user
             name: casper-1-root-vol
