@@ -28,7 +28,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
     python3-venv \
-    python3-pip
+    python3-pip \
+    python3-setuptools
 
 WORKDIR /tools
 RUN curl https://nextcloud.nautilus.optiputer.net/s/yLSs43Dyps6XPMq/download --output xilinx-u200-xdma-201830.2-dev-2580015_18.04.deb && \
