@@ -21,7 +21,7 @@ spec:
       - key: "nautilus.io/nogl"
         operator: "Exists"
         effect: "NoSchedule"
-      - key: "nautilus.io/vis=suncave"
+      - key: "nautilus.io/vis"
         operator: "Exists"
         effect: "NoSchedule"
       hostname: casper-1
