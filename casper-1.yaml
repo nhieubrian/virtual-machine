@@ -28,15 +28,11 @@ spec:
       initContainers:
         -
           name: clone
-          image: alpine:3.7
+          image: gitlab-registry.nautilus.optiputer.net/casper/xilinx-casper:latest
           command: ["/bin/sh","-c"]
-          args: ['apk add --no-cache py3-pip git && rm -rf /home/user/mlib_devel && \
-          git clone https://github.com/casper-astro/mlib_devel /home/user/mlib_devel && \
-          cd /home/user/mlib_devel && \
-          git checkout m2019a && \
-          pip3 install -r requirements.txt']
+          args: ['rm -rf /user/mlib_devel && git clone https://github.com/casper-astro/mlib_devel /home/user/mlib_devel && cd /home/user/mlib_devel && git checkout m2019a && pip3 install -r requirements.txt']
           volumeMounts:
-          - mountPath: /home/user
+          - mountPath: /user
             name: casper-1-root-vol
 #      restartPolicy: Always
       containers:
