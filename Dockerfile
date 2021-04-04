@@ -27,7 +27,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libdbus-c++-1-0v5
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
-    python3-venv
+    python3-venv \
+    python3-pip
 
 WORKDIR /tools
 RUN curl https://nextcloud.nautilus.optiputer.net/s/yLSs43Dyps6XPMq/download --output xilinx-u200-xdma-201830.2-dev-2580015_18.04.deb && \
@@ -41,11 +42,6 @@ RUN wget -O install_drivers.tar https://nextcloud.nautilus.optiputer.net/s/SNoy7
     tar -xvf install_drivers.tar && \
     cd install_drivers && \
     ./install_drivers
-
-#    curl https://nextcloud.nautilus.optiputer.net/s/gX5So7L9E2bPzyH/download --output R2019a_Linux.iso && \
-#    curl https://nextcloud.nautilus.optiputer.net/s/fp7wzWo9HWP99Kp/download --output network.lib && \
-#    curl https://nextcloud.nautilus.optiputer.net/s/6sG9cemHwAz3PJd/download --output FIK.txt && \
-#    rm -rf /var/lib/apt/lists/*
 
 RUN git clone https://github.com/casper-astro/casperfpga && \
     cd casperfpga  && \
