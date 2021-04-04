@@ -18,7 +18,7 @@ spec:
         operator: "Equal"
         value: "allow"
         effect: "NoSchedule"
-      - key: "nautilus.io/nogl=nogll"
+      - key: "nautilus.io/nogl"
         operator: "Exists"
         effect: "NoSchedule"
       - key: "nautilus.io/vis=suncave"
