@@ -57,7 +57,7 @@ USER user
 WORKDIR /home/user
 
 #RUN python3 -m venv casper_venv && \
-    source casper_venv/bin/activate
+#    source casper_venv/bin/activate
 
 #RUN git clone https://github.com/casper-astro/mlib_devel && \
 #    cd mlib_devel && \
