@@ -30,8 +30,7 @@ spec:
           name: clone
           image: alpine:3.7
           command: ["/bin/sh","-c"]
-          args: ['apk add --no-cache py3-pip git && \
-          rm -rf /home/user/mlib_devel && \
+          args: ['apk add --no-cache py3-pip git && rm -rf /home/user/mlib_devel && \
           git clone https://github.com/casper-astro/mlib_devel /home/user/mlib_devel && \
           cd /home/user/mlib_devel && \
           git checkout m2019a && \
