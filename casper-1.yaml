@@ -18,7 +18,10 @@ spec:
         operator: "Equal"
         value: "allow"
         effect: "NoSchedule"
-      - key: "nautilus.io/oldkernel"
+      - key: "nautilus.io/nogl=nogll"
+        operator: "Exists"
+        effect: "NoSchedule"
+      - key: "nautilus.io/vis=suncave"
         operator: "Exists"
         effect: "NoSchedule"
       hostname: casper-1
@@ -50,17 +53,18 @@ spec:
         securityContext:
           capabilities:
             add: ["NET_ADMIN"]
-#          privileged: true
         ports:
           - containerPort: 5901
             protocol: TCP
         resources:
           limits:
             #xilinx.com/fpga-xilinx_u200_xdma_201830_2-1561465320: 1
+            nvidia.com/gpu: 1
             memory: "8Gi"
             cpu: "5"
             ephemeral-storage: 8Gi
           requests:
+            nvidia.com/gpu: 1
             memory: "8Gi"
             cpu: "5"
             ephemeral-storage: 8Gi
@@ -117,4 +121,3 @@ spec:
       - backend:
           serviceName: casper-1
           servicePort: 5901
-
