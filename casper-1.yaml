@@ -68,14 +68,14 @@ spec:
             protocol: TCP
         resources:
           limits:
-            #xilinx.com/fpga-xilinx_u200_xdma_201830_2-1561465320: 1
-            nvidia.com/gpu: 1
+#            xilinx.com/fpga-xilinx_u200_xdma_201830_2-1561465320: 1
+#            nvidia.com/gpu: 1
             memory: "32Gi"
-            cpu: "4"
+            cpu: "6"
             ephemeral-storage: 16Gi
           requests:
             memory: "32Gi"
-            cpu: "6"
+            cpu: "4"
             ephemeral-storage: 16Gi
         volumeMounts:
         - mountPath: /home/user
