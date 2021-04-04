@@ -26,6 +26,8 @@ spec:
       - name: casper-1
         image: gitlab-registry.nautilus.optiputer.net/casper/xilinx-casper:latest
         env:
+        - name: XILINXD_LICENSE_FILE
+          value: "2100@xilinxd"
         - name: TZ
           value: "America/Los_Angeles"
         - name: NETWORKING
