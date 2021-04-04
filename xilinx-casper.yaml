@@ -13,14 +13,12 @@ spec:
       labels:
         app: xilinx-casper
     spec:
-      tolerations:
-      - key: "region"
-        operator: "Equal"
-        value: "allow"
-        effect: "NoSchedule"
-      - key: "nautilus.io/oldkernel"
-        operator: "Exists"
-        effect: "NoSchedule"
+      nodeSelector:
+#        kubernetes.io/hostname: suncave-12
+      tolerations: 
+        - key: nautilus.io/suncave
+          effect: NoSchedule
+          operator: Exists
       hostname: xilinx-casper
       containers:
       - name: xilinx-casper
