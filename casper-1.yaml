@@ -25,6 +25,16 @@ spec:
         operator: "Exists"
         effect: "NoSchedule"
       hostname: casper-1
+      initContainers:
+        -
+          name: clone
+          image: alpine:3.7
+          command: ["/bin/sh","-c"]
+          args: ['apk add --no-cache git && git clone https://github.com/casper-astro/mlib_devel && cd mlib_devel && git checkout m2019a && pip3 install -r requirements.txt']
+          volumeMounts:
+          - mountPath: /home/user
+            name: casper-1-root-vol
+      restartPolicy: Never
       containers:
       - name: casper-1
         image: gitlab-registry.nautilus.optiputer.net/casper/xilinx-casper:latest
