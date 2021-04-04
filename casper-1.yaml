@@ -1,0 +1,118 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: casper-1
+  namespace: casper
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: casper-1
+  template:
+    metadata:
+      labels:
+        app: casper-1
+    spec:
+      tolerations:
+      - key: "region"
+        operator: "Equal"
+        value: "allow"
+        effect: "NoSchedule"
+      - key: "nautilus.io/oldkernel"
+        operator: "Exists"
+        effect: "NoSchedule"
+      hostname: casper-1
+      containers:
+      - name: casper-1
+        image: gitlab-registry.nautilus.optiputer.net/casper/xilinx-casper:latest
+        env:
+        - name: TZ
+          value: "America/Los_Angeles"
+        - name: NETWORKING
+          value: "yes"
+        - name: container
+          value: "docker"
+        - name: SIZEW
+          value: "1920"
+        - name: SIZEH
+          value: "1200"
+        - name: CDEPTH
+          value: "24"
+        - name: SHARED
+          value: "TRUE"
+        - name: VNCPASS
+          valueFrom:
+            secretKeyRef:
+              name: xilinx-casper-egl-pass
+              key: xilinx-casper-egl-pass
+        securityContext:
+          capabilities:
+            add: ["NET_ADMIN"]
+#          privileged: true
+        ports:
+          - containerPort: 5901
+            protocol: TCP
+        resources:
+          limits:
+            #xilinx.com/fpga-xilinx_u200_xdma_201830_2-1561465320: 1
+            memory: "8Gi"
+            cpu: "5"
+            ephemeral-storage: 8Gi
+          requests:
+            memory: "8Gi"
+            cpu: "5"
+            ephemeral-storage: 8Gi
+        volumeMounts:
+        - mountPath: /home/user
+          name: casper-1-root-vol
+        - mountPath: /usr/local/MATLAB
+          name: xilinx-casper-matlab-vol
+        - mountPath: /tools
+          name: xilinx-casper-tools-vol
+        - mountPath: /dev/shm
+          name: dshm
+      volumes:
+        - name: casper-1-root-vol
+          persistentVolumeClaim:
+            claimName: casper-1-root-vol
+        - name: xilinx-casper-matlab-vol
+          persistentVolumeClaim:
+            claimName: xilinx-casper-matlab-vol
+        - name: xilinx-casper-tools-vol
+          persistentVolumeClaim:
+            claimName: xilinx-casper-tools-vol
+        - name: dshm
+          emptyDir:
+            medium: Memory
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: casper-1
+  namespace: casper
+  labels:
+    app: casper-1
+spec:
+  selector:
+    app: casper-1
+  ports:
+  - name: casper-1
+    protocol: TCP
+    port: 5901
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: casper-1-ingress
+  namespace: casper
+  annotations:
+    traefik.ingress.kubernetes.io/router.tls: ""
+spec:
+  rules:
+  - host: casper-1.nautilus.optiputer.net
+    http:
+      paths:
+      - backend:
+          serviceName: casper-1
+          servicePort: 5901
+
