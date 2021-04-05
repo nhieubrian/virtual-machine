@@ -31,7 +31,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     python3-pip \
     python3-setuptools
 
-WORKDIR /tools
+WORKDIR /xilinx
 RUN curl https://nextcloud.nautilus.optiputer.net/s/yLSs43Dyps6XPMq/download --output xilinx-u200-xdma-201830.2-dev-2580015_18.04.deb && \
     curl https://nextcloud.nautilus.optiputer.net/s/s8EjqqWfMkWoQYs/download --output xilinx-u200-xdma-201830.2-2580015_18.04.deb && \
     curl https://nextcloud.nautilus.optiputer.net/s/YXjktibxG9tRGFj/download --output xrt_201910.2.2.2250_18.04-xrt.deb && \
@@ -50,13 +50,14 @@ RUN git clone https://github.com/casper-astro/casperfpga && \
     pip install -r requirements.txt && \
     pip install casperfpga
 
+
+RUN python3 -m venv casper_venv && \
+    /bin/bash -c "source casper_venv/bin/activate"
+
+RUN git clone https://github.com/casper-astro/mlib_devel && \
+    cd mlib_devel && \
+    git checkout m2019a && \
+    pip3 install -r requirements.txt
+
 USER user
 WORKDIR /home/user
-
-#RUN python3 -m venv casper_venv && \
-#    source casper_venv/bin/activate
-
-#RUN git clone https://github.com/casper-astro/mlib_devel && \
-#    cd mlib_devel && \
-#    git checkout m2019a && \
-#    pip3 install -r requirements.txt
