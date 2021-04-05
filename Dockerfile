@@ -20,16 +20,14 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libtinfo5 \
     libsm6 \
     libxv1 \
-    libxv1:i386
-
-RUN apt-get update && apt-get install -y --no-install-recommends \
+    libxv1:i386 \
     dbus-x11 \
-    libdbus-c++-1-0v5
-
-RUN apt-get update && apt-get install -y --no-install-recommends \
+    libdbus-c++-1-0v5 \
     python3-venv \
     python3-pip \
     python3-setuptools
+
+RUN pip3 install wheel
 
 WORKDIR /xilinx
 RUN curl https://nextcloud.nautilus.optiputer.net/s/yLSs43Dyps6XPMq/download --output xilinx-u200-xdma-201830.2-dev-2580015_18.04.deb && \
@@ -50,10 +48,9 @@ RUN git clone https://github.com/casper-astro/casperfpga && \
     pip install -r requirements.txt && \
     pip install casperfpga
 
-
-RUN python3 -m venv casper_venv && \
-    /bin/bash -c "source casper_venv/bin/activate" && \
-    pip3 install wheel
+#RUN python3 -m venv casper_venv && \
+#    /bin/bash -c "source casper_venv/bin/activate" && \
+#    pip3 install wheel
 
 RUN git clone https://github.com/casper-astro/mlib_devel && \
     cd mlib_devel && \
