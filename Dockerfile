@@ -52,7 +52,8 @@ RUN git clone https://github.com/casper-astro/casperfpga && \
 
 
 RUN python3 -m venv casper_venv && \
-    /bin/bash -c "source casper_venv/bin/activate"
+    /bin/bash -c "source casper_venv/bin/activate" && \
+    pip3 install wheel
 
 RUN git clone https://github.com/casper-astro/mlib_devel && \
     cd mlib_devel && \
