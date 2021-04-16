@@ -81,6 +81,8 @@ spec:
           name: casper-1-root-vol
         - mountPath: /usr/local/MATLAB
           name: xilinx-casper-matlab-vol
+        - mountPath: /software
+          name: xilinx-casper-software-vol
         - mountPath: /tools
           name: xilinx-casper-tools-vol
         - mountPath: /dev/shm
@@ -92,6 +94,9 @@ spec:
         - name: xilinx-casper-matlab-vol
           persistentVolumeClaim:
             claimName: xilinx-casper-matlab-vol
+        - name: xilinx-casper-software-vol
+          persistentVolumeClaim:
+            claimName: xilinx-casper-software-vol
         - name: xilinx-casper-tools-vol
           persistentVolumeClaim:
             claimName: xilinx-casper-tools-vol
