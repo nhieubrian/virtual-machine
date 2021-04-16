@@ -57,8 +57,8 @@ RUN git clone https://github.com/casper-astro/mlib_devel && \
     git checkout m2019a && \
     pip3 install -r requirements.txt
 
-RUN update-alternatives --install /usr/bin/python python /usr/bin/python2.7 10
-RUN update-alternatives --install /usr/bin/python python /usr/bin/python3.6 20
+RUN update-alternatives --install /usr/bin/python python /usr/bin/python2.7 20
+RUN update-alternatives --install /usr/bin/python python /usr/bin/python3.6 10
 
 USER user
 WORKDIR /home/user
