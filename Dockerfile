@@ -60,5 +60,8 @@ RUN git clone https://github.com/casper-astro/mlib_devel && \
 RUN update-alternatives --install /usr/bin/python python /usr/bin/python2.7 20
 RUN update-alternatives --install /usr/bin/python python /usr/bin/python3.6 10
 
+COPY bootstrap.sh /bootstrap.sh
+RUN chmod 755 /bootstrap.sh
+
 USER user
 WORKDIR /home/user
