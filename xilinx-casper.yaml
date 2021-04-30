@@ -15,10 +15,20 @@ spec:
     spec:
       nodeSelector:
 #        kubernetes.io/hostname: suncave-12
-      tolerations: 
-        - key: nautilus.io/suncave
-          effect: NoSchedule
-          operator: Exists
+      tolerations:
+      - key: "region"
+        operator: "Equal"
+        value: "allow"
+        effect: "NoSchedule"
+      - key: "nautilus.io/nogl"
+        operator: "Exists"
+        effect: "NoSchedule"
+      - key: "nautilus.io/vis"
+        operator: "Exists"
+        effect: "NoSchedule"
+      - key: nautilus.io/suncave
+        effect: NoSchedule
+        operator: Exists
       hostname: xilinx-casper
       containers:
       - name: xilinx-casper
