@@ -11,7 +11,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     python3-setuptools
 
 RUN wget https://nextcloud.nautilus.optiputer.net/s/HtBcCw6MTNfM4Ci/download -O isaac-sdk-20201201-427971df2.tar.xz && \
-    tar -zxvf isaac-sdk-20201201-427971df2.tar.xz
+    tar -xvf isaac-sdk-20201201-427971df2.tar.xz
     
 COPY bootstrap.sh /bootstrap.sh
 RUN chmod 755 /bootstrap.sh
