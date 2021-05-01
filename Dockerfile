@@ -13,10 +13,12 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 COPY bootstrap.sh /bootstrap.sh
 RUN chmod 755 /bootstrap.sh
 
-USER user
 WORKDIR /isaac
 RUN wget https://nextcloud.nautilus.optiputer.net/s/HtBcCw6MTNfM4Ci/download -O isaac-sdk-20201201-427971df2.tar.xz && \
-    tar -xvf isaac-sdk-20201201-427971df2.tar.xz && \
-    cd engine && ./engine/build/scripts/install_dependencies.sh
+    tar -xvf isaac-sdk-20201201-427971df2.tar.xz && chown -R user:user /isaac
+
+USER user 
+WORKDIR /isaac/engine 
+RUN ./engine/build/scripts/install_dependencies.sh
 
 WORKDIR /home/user
