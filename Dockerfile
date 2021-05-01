@@ -40,14 +40,13 @@ RUN curl -s -L https://packages.nvidia.com/install/repositories/dataplatform_pro
 RUN apt-get install -y python3-scp python-scp python-elasticsearch python3-elasticsearch protobuf-compiler
 
 COPY requirements.txt .
-RUN python3 -m pip install -r ./requirements.txt && \
+RUN python3 -m pip install --pre --no-cache-dir --extra-index-url https://developer.download.nvidia.com/compute/redist/jp/v42 tensorflow-gpu -r ./requirements.txt && \
     jupyter nbextension enable --py widgetsnbextension
 RUN python3 -m pip install pyparsing
 
 RUN curl -s -L https://github.com/bazelbuild/bazel/releases/download/3.1.0/bazel-3.1.0-installer-linux-x86_64.sh -o bazel-3.1.0-installer-linux-x86_64.sh && \
     chmod +x bazel-3.1.0-installer-linux-x86_64.sh && \
     /bin/bash ./bazel-3.1.0-installer-linux-x86_64.sh
-
 
 COPY bootstrap.sh /bootstrap.sh
 RUN chmod 755 /bootstrap.sh
