@@ -51,7 +51,7 @@ spec:
           valueFrom:
             secretKeyRef:
               name: isaac-egl-pass
-              key: isaac-egl-pass
+              key: password
         securityContext:
           capabilities:
             add: ["NET_ADMIN"]
