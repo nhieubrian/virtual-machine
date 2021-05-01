@@ -18,7 +18,8 @@ RUN wget -q https://nextcloud.nautilus.optiputer.net/s/HtBcCw6MTNfM4Ci/download 
     tar -xf isaac-sdk-20201201-427971df2.tar.xz && chown -R user:user /isaac
 
 USER user 
-WORKDIR /isaac/engine 
+WORKDIR /isaac/engine
+ARG DEBIAN_FRONTEND=noninteractive
 RUN ./engine/build/scripts/install_dependencies.sh
 
 WORKDIR /home/user
