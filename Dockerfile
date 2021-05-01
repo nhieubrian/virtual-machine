@@ -40,7 +40,7 @@ RUN curl -s -L https://packages.nvidia.com/install/repositories/dataplatform_pro
 RUN apt-get install -y python3-scp python-scp python-elasticsearch python3-elasticsearch protobuf-compiler
 
 COPY requirements.txt .
-RUN python3 -m pip install --pre --no-cache-dir --extra-index-url https://developer.download.nvidia.com/compute/redist/jp/v42 tensorflow-gpu -r ./requirements.txt && \
+RUN python3 -m pip install --pre --no-cache-dir --extra-index-url https://developer.download.nvidia.com/compute/redist/jp/v42 tensorflow-gpu==1.15.0 -r ./requirements.txt && \
     jupyter nbextension enable --py widgetsnbextension
 RUN python3 -m pip install pyparsing
 
@@ -51,14 +51,12 @@ RUN curl -s -L https://github.com/bazelbuild/bazel/releases/download/3.1.0/bazel
 COPY bootstrap.sh /bootstrap.sh
 RUN chmod 755 /bootstrap.sh
 
-WORKDIR /isaac
-RUN wget -q https://nextcloud.nautilus.optiputer.net/s/HtBcCw6MTNfM4Ci/download -O isaac-sdk-20201201-427971df2.tar.xz && \
-    tar -xf isaac-sdk-20201201-427971df2.tar.xz && chown -R user:user /isaac
-COPY install_dependencies.sh /isaac/engine/engine/build/scripts/install_dependencies.sh
-RUN chmod 755 /isaac/engine/engine/build/scripts/install_dependencies.sh
+#WORKDIR /isaac
+#RUN wget -q https://nextcloud.nautilus.optiputer.net/s/HtBcCw6MTNfM4Ci/download -O isaac-sdk-20201201-427971df2.tar.xz && \
+#    tar -xf isaac-sdk-20201201-427971df2.tar.xz && chown -R user:user /isaac
+
 USER user 
 WORKDIR /isaac/engine
 ARG DEBIAN_FRONTEND=noninteractive
-#RUN ./engine/build/scripts/install_dependencies.sh
 
 WORKDIR /home/user
