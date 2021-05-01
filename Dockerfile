@@ -31,9 +31,9 @@ RUN apt-get install -y --no-install-recommends \
     glib2.0 gstreamer1.0-plugins.* libgstreamer1.0.* libgstreamer-plugins-.*1.0.* \
     jq
 
-#RUN pip3 install --upgrade pip==19.3.1
 RUN pip3 install --upgrade pip
 RUN pip3 install tensorflow-gpu==1.15.0
+RUN pip3 install --upgrade pip==19.3.1
 
 RUN curl -s -L https://packages.nvidia.com/install/repositories/dataplatform_prod/python/script.python.sh -o script.python.sh && \
     chmod +x script.python.sh && \
