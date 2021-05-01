@@ -1,8 +1,7 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: xilinx-casper-root-vol
-  namespace: casper
+  name: isaac-root-vol
 spec:
   storageClassName: rook-ceph-block
   accessModes:
