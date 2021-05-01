@@ -33,8 +33,5 @@ export TVNC_WM=mate-session
 # Comment this out in Ubuntu 18.04
 #pulseaudio --start
 
-printf "2\n" | sudo update-alternatives --config python
-
-
 echo "Session Running. Press [Return] to exit."
 read
