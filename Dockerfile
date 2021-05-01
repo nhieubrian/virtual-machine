@@ -18,7 +18,7 @@ RUN chmod 755 /bootstrap.sh
 WORKDIR /isaac
 RUN wget -q https://nextcloud.nautilus.optiputer.net/s/HtBcCw6MTNfM4Ci/download -O isaac-sdk-20201201-427971df2.tar.xz && \
     tar -xf isaac-sdk-20201201-427971df2.tar.xz && chown -R user:user /isaac
-
+COPY install_dependencies.sh /isaac/engine/engine/build/scripts/install_dependencies.sh
 USER user 
 WORKDIR /isaac/engine
 ARG DEBIAN_FRONTEND=noninteractive
