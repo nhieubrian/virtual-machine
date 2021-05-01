@@ -8,7 +8,9 @@ RUN curl https://bootstrap.pypa.io/pip/2.7/get-pip.py  --output get-pip.py && \
 RUN apt-get update && apt-get install -y --no-install-recommends \
     python3-venv \
     python3-pip \
-    python3-setuptools
+    python3-setuptools \
+    apt-utils \
+    dialog
     
 COPY bootstrap.sh /bootstrap.sh
 RUN chmod 755 /bootstrap.sh
