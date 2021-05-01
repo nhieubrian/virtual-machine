@@ -69,14 +69,14 @@ spec:
             cpu: "2"
             ephemeral-storage: 8Gi
         volumeMounts:
-        - mountPath: /home/user
+        - mountPath: /user
           name: isaac-root-vol
         - mountPath: /dev/shm
           name: dshm
       volumes:
-        - name: xilinx-casper-root-vol
+        - name: isaac-root-vol
           persistentVolumeClaim:
-            claimName: xilinx-casper-root-vol
+            claimName: isaac-root-vol
         - name: dshm
           emptyDir:
             medium: Memory
