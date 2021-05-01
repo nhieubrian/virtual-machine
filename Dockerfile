@@ -2,8 +2,6 @@ FROM gitlab-registry.nautilus.optiputer.net/prp/docker-nvidia-egl-desktop-18.04:
 
 USER root
 
-#RUN curl https://bootstrap.pypa.io/pip/2.7/get-pip.py  --output get-pip.py && python2 get-pip.py
-
 RUN apt-get update && apt-get install -y --no-install-recommends \
     python3-venv \
     python3-pip \
@@ -14,6 +12,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     lsb-core \
     git git-lfs git-review build-essential g++ redis-server
 
+RUN pip3 install tensorflow-gpu==1.15.0
+
 RUN git lfs install
 RUN apt-get install -y --no-install-recommends \
     pkg-config zip zlib1g-dev unzip curl \
@@ -23,7 +23,6 @@ RUN apt-get install -y --no-install-recommends \
     gcc-aarch64-linux-gnu g++-aarch64-linux-gnu \
     libvpx5 libtwolame-dev libtheora-bin libspeex1 \
     libopus0 libmp3lame0 libvdpau1 openexr libmpg123-0 \
-    python3-pip \
     latexmk texlive-latex-recommended texlive-latex-extra texlive-fonts-recommended \
     texlive-luatex texlive-xetex \
     libudev-dev \
@@ -40,8 +39,7 @@ RUN curl -s -L https://packages.nvidia.com/install/repositories/dataplatform_pro
 RUN apt-get install -y python3-scp python-scp python-elasticsearch python3-elasticsearch protobuf-compiler
 
 COPY requirements.txt .
-RUN pip3 install --pre --no-cache-dir tensorflow-gpu==1.15.0 && \
-    pip3 install --pre --no-cache-dir -r ./requirements.txt
+RUN pip3 install --pre --no-cache-dir -r ./requirements.txt
 
 RUN jupyter nbextension enable --py widgetsnbextension
 RUN python3 -m pip install pyparsing
