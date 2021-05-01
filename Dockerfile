@@ -12,8 +12,6 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     lsb-core \
     git git-lfs git-review build-essential g++ redis-server
 
-RUN pip3 install tensorflow-gpu==1.15.0
-
 RUN git lfs install
 RUN apt-get install -y --no-install-recommends \
     pkg-config zip zlib1g-dev unzip curl \
@@ -33,10 +31,15 @@ RUN apt-get install -y --no-install-recommends \
     glib2.0 gstreamer1.0-plugins.* libgstreamer1.0.* libgstreamer-plugins-.*1.0.* \
     jq
 
+#RUN pip3 install --upgrade pip==19.3.1
+RUN pip3 install --upgrade pip
+RUN pip3 install tensorflow-gpu==1.15.0
+
 RUN curl -s -L https://packages.nvidia.com/install/repositories/dataplatform_prod/python/script.python.sh -o script.python.sh && \
     chmod +x script.python.sh && \
     /bin/bash script.python.sh
 RUN apt-get install -y python3-scp python-scp python-elasticsearch python3-elasticsearch protobuf-compiler
+
 
 COPY requirements.txt .
 RUN pip3 install --pre --no-cache-dir -r ./requirements.txt
