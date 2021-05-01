@@ -1,17 +1,16 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: xilinx-casper
-  namespace: casper
+  name: isaac
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: xilinx-casper
+      app: isaac
   template:
     metadata:
       labels:
-        app: xilinx-casper
+        app: isaac
     spec:
       nodeSelector:
 #        kubernetes.io/hostname: suncave-12
@@ -29,13 +28,11 @@ spec:
       - key: nautilus.io/suncave
         effect: NoSchedule
         operator: Exists
-      hostname: xilinx-casper
+      hostname: isaac
       containers:
-      - name: xilinx-casper
-        image: gitlab-registry.nautilus.optiputer.net/casper/xilinx-casper:latest
+      - name: isaac
+        image: gitlab-registry.nautilus.optiputer.net/prp/isaac:latest
         env:
-        - name: XILINXD_LICENSE_FILE
-          value: "2100@xilinxd"
         - name: TZ
           value: "America/Los_Angeles"
         - name: NETWORKING
@@ -53,8 +50,8 @@ spec:
         - name: VNCPASS
           valueFrom:
             secretKeyRef:
-              name: xilinx-casper-egl-pass
-              key: xilinx-casper-egl-pass
+              name: isaac-egl-pass
+              key: isaac-egl-pass
         securityContext:
           capabilities:
             add: ["NET_ADMIN"]
@@ -64,33 +61,22 @@ spec:
             protocol: TCP
         resources:
           limits:
-            xilinx.com/fpga-xilinx_u200_xdma_201830_2-1561465320: 1
-            memory: "32Gi"
-            cpu: "16"
-            ephemeral-storage: 32Gi
+            memory: "8Gi"
+            cpu: "2"
+            ephemeral-storage: 8Gi
           requests:
-            memory: "32Gi"
-            cpu: "16"
-            ephemeral-storage: 32Gi
+            memory: "8Gi"
+            cpu: "2"
+            ephemeral-storage: 8Gi
         volumeMounts:
         - mountPath: /home/user
-          name: xilinx-casper-root-vol
-        - mountPath: /usr/local/MATLAB
-          name: xilinx-casper-matlab-vol
-        - mountPath: /tools
-          name: xilinx-casper-tools-vol
+          name: isaac-root-vol
         - mountPath: /dev/shm
           name: dshm
       volumes:
         - name: xilinx-casper-root-vol
           persistentVolumeClaim:
             claimName: xilinx-casper-root-vol
-        - name: xilinx-casper-matlab-vol
-          persistentVolumeClaim:
-            claimName: xilinx-casper-matlab-vol
-        - name: xilinx-casper-tools-vol
-          persistentVolumeClaim:
-            claimName: xilinx-casper-tools-vol
         - name: dshm
           emptyDir:
             medium: Memory
