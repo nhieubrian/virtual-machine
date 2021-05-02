@@ -2,7 +2,7 @@
 pycapnp==0.6.4
 keras==2.3.1
 Pillow==7.2.0
-psutil==5.7.2
+#psutil==5.7.2
 scipy==1.5.2
 graphviz==0.14.1
 nltk==3.5
