@@ -69,7 +69,7 @@ spec:
           limits:
             memory: "32Gi"
             cpu: "12"
-            ephemeral-storage: 32Gi
+            ephemeral-storage: 16Gi
             nvidia.com/gpu: 2
             hostdev.k8s.io/dev_dri_card0: 1
             hostdev.k8s.io/dev_dri_card1: 1
@@ -78,7 +78,7 @@ spec:
             hostdev.k8s.io/dev_tty63: 1
           requests:
             memory: "32Gi"
-            ephemeral-storage: 32Gi
+            ephemeral-storage: 16Gi
             cpu: "12"
             nvidia.com/gpu: 2
             hostdev.k8s.io/dev_dri_card0: 1
