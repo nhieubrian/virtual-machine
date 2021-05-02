@@ -61,13 +61,13 @@ spec:
             protocol: TCP
         resources:
           limits:
-            memory: "8Gi"
-            cpu: "2"
-            ephemeral-storage: 8Gi
+            memory: "32Gi"
+            cpu: "8"
+            ephemeral-storage: 32Gi
           requests:
-            memory: "8Gi"
-            cpu: "2"
-            ephemeral-storage: 8Gi
+            memory: "32Gi"
+            cpu: "8"
+            ephemeral-storage: 32Gi
         volumeMounts:
         - mountPath: /home/user
           name: isaac-root-vol
