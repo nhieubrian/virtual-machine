@@ -28,6 +28,12 @@ spec:
       - key: nautilus.io/suncave
         effect: NoSchedule
         operator: Exists
+      - key: nautilus.io/suncave
+        effect: NoSchedule
+        operator: Exists
+      - key: nautilus.io/nogltest
+        effect: NoSchedule
+        operator: Exists
       hostname: isaac
       containers:
       - name: isaac
@@ -54,30 +60,46 @@ spec:
               key: password
         securityContext:
           capabilities:
-            add: ["NET_ADMIN"]
-#          privileged: true
+            add: ["SYS_TTY_CONFIG"]
+#            add: ["NET_ADMIN"]
         ports:
           - containerPort: 5901
             protocol: TCP
         resources:
           limits:
             memory: "32Gi"
-            cpu: "8"
+            cpu: "12"
             ephemeral-storage: 32Gi
+            nvidia.com/gpu: 2
+            hostdev.k8s.io/dev_dri_card0: 1
+            hostdev.k8s.io/dev_dri_card1: 1
+            hostdev.k8s.io/dev_dri_renderD128: 1
+            hostdev.k8s.io/dev_dri_renderD129: 1
+            hostdev.k8s.io/dev_tty63: 1
           requests:
             memory: "32Gi"
-            cpu: "8"
             ephemeral-storage: 32Gi
+            cpu: "12"
+            nvidia.com/gpu: 2
+            hostdev.k8s.io/dev_dri_card0: 1
+            hostdev.k8s.io/dev_dri_card1: 1
+            hostdev.k8s.io/dev_dri_renderD128: 1
+            hostdev.k8s.io/dev_dri_renderD129: 1
+            hostdev.k8s.io/dev_tty63: 1
         volumeMounts:
         - mountPath: /home/user
           name: isaac-root-vol
+        - mountPath: /dev/dri
+          name: drm
         - mountPath: /dev/shm
           name: dshm
       volumes:
         - name: isaac-root-vol
           persistentVolumeClaim:
             claimName: isaac-root-vol
+        - name: drm
+          hostPath:
+            path: /dev/dri
         - name: dshm
           emptyDir:
             medium: Memory
-
