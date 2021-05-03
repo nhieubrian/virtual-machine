@@ -54,6 +54,31 @@ RUN curl -s -L https://github.com/bazelbuild/bazel/releases/download/3.1.0/bazel
 COPY bootstrap.sh /bootstrap.sh
 RUN chmod 755 /bootstrap.sh
 
+
+RUN cd /usr/local/ && \
+    wget -q -O blender-2.90.1-linux64.tar.xz https://download.blender.org/release/Blender2.90/blender-2.90.1-linux64.tar.xz && \
+    tar -xf blender-2.90.1-linux64.tar.xz && \
+    rm -rf blender-2.90.1-linux64.tar.xz && \
+    ln -s /usr/local/blender-2.90.1-linux64 /usr/local/blender && \
+    cp /usr/local/blender-2.90.1-linux64/blender.desktop /usr/share/applications/blender.desktop
+#    mkdir /usr/local/UnrealEngine && \
+#    chown 1000:1000 /usr/local/UnrealEngine \
+
+RUN cd /usr/local/ && \
+    apt update -y && \
+    apt install -y software-properties-common apt-transport-https wget && \
+    wget -q https://packages.microsoft.com/keys/microsoft.asc -O- | sudo apt-key add - && \
+    add-apt-repository "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" && \
+    apt update -y && \
+    apt install -y code
+
+RUN apt install -y apt-transport-https ca-certificates curl software-properties-common && \
+    curl -fsSL https://download.sublimetext.com/sublimehq-pub.gpg | sudo apt-key add - && \
+    add-apt-repository "deb https://download.sublimetext.com/ apt/stable/" && \
+    apt update -y && \
+    apt install -y sublime-text
+
+
 #WORKDIR /isaac
 #RUN wget -q https://nextcloud.nautilus.optiputer.net/s/HtBcCw6MTNfM4Ci/download -O isaac-sdk-20201201-427971df2.tar.xz && \
 #    tar -xf isaac-sdk-20201201-427971df2.tar.xz && chown -R user:user /isaac
