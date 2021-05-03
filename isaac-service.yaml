@@ -2,28 +2,28 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: isaac
+  name: isaacaip
   labels:
-    app: isaac
+    app: isaacaip
 spec:
   selector:
-    app: isaac
+    app: isaacaip
   ports:
-  - name: isaac
+  - name: isaacaip
     protocol: TCP
     port: 5901
 ---
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
-  name: isaac-ingress
+  name: isaacaip-ingress
   annotations:
     traefik.ingress.kubernetes.io/router.tls: ""
 spec:
   rules:
-  - host: isaac.nautilus.optiputer.net
+  - host: isaacaip.nautilus.optiputer.net
     http:
       paths:
       - backend:
-          serviceName: isaac
+          serviceName: isaacaip
           servicePort: 5901
