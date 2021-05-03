@@ -1,16 +1,16 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: isaac
+  name: isaacaipaip
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: isaac
+      app: isaacaip
   template:
     metadata:
       labels:
-        app: isaac
+        app: isaacaip
     spec:
       nodeSelector:
 #        kubernetes.io/hostname: suncave-12
@@ -34,10 +34,10 @@ spec:
       - key: nautilus.io/nogltest
         effect: NoSchedule
         operator: Exists
-      hostname: isaac
+      hostname: isaacaip
       containers:
-      - name: isaac
-        image: gitlab-registry.nautilus.optiputer.net/prp/isaac:latest
+      - name: isaacaip
+        image: gitlab-registry.nautilus.optiputer.net/prp/isaacaip:latest
         env:
         - name: TZ
           value: "America/Los_Angeles"
@@ -56,7 +56,7 @@ spec:
         - name: VNCPASS
           valueFrom:
             secretKeyRef:
-              name: isaac-egl-pass
+              name: isaacaip-egl-pass
               key: password
         securityContext:
           capabilities:
@@ -88,15 +88,15 @@ spec:
             hostdev.k8s.io/dev_tty63: 1
         volumeMounts:
         - mountPath: /home/user
-          name: isaac-root-vol
+          name: isaacaip-root-vol
         - mountPath: /dev/dri
           name: drm
         - mountPath: /dev/shm
           name: dshm
       volumes:
-        - name: isaac-root-vol
+        - name: isaacaip-root-vol
           persistentVolumeClaim:
-            claimName: isaac-root-vol
+            claimName: isaacaip-root-vol
         - name: drm
           hostPath:
             path: /dev/dri
