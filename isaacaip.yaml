@@ -38,7 +38,7 @@ spec:
       hostname: isaacaip
       containers:
       - name: isaacaip
-        image: gitlab-registry.nautilus.optiputer.net/prp/isaacaip:latest
+        image: gitlab-registry.nautilus.optiputer.net/monkeytang/isaacaip
         env:
         - name: TZ
           value: "America/Los_Angeles"
