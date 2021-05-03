@@ -14,7 +14,7 @@ spec:
         app: isaacaip
     spec:
       nodeSelector:
-#        kubernetes.io/hostname: suncave-12
+        kubernetes.io/hostname: suncave-31
       tolerations:
       - key: "region"
         operator: "Equal"
