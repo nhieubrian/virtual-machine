@@ -2,29 +2,29 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: isaacaip
+  name: purpleaip
   namespace : aip-ml
   labels:
-    app: isaacaip
+    app: purpleaip
 spec:
   selector:
-    app: isaacaip
+    app: purpleaip
   ports:
-  - name: isaacaip
+  - name: purpleaip
     protocol: TCP
     port: 5901
 ---
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
-  name: isaacaip-ingress
+  name: purpleaip-ingress
   annotations:
     traefik.ingress.kubernetes.io/router.tls: ""
 spec:
   rules:
-  - host: isaacaip.nautilus.optiputer.net
+  - host: purpleaip.nautilus.optiputer.net
     http:
       paths:
       - backend:
-          serviceName: isaacaip
+          serviceName: purpleaip
           servicePort: 5901
