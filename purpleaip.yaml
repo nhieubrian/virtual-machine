@@ -14,7 +14,7 @@ spec:
         app: purpleaip
     spec:
       nodeSelector:
-        kubernetes.io/hostname: suncave-31
+        kubernetes.io/hostname: suncave-15
       tolerations:
       - key: "region"
         operator: "Equal"
@@ -68,7 +68,7 @@ spec:
             protocol: TCP
         resources:
           limits:
-            memory: "32Gi"
+            memory: "16Gi"
             cpu: "8"
             ephemeral-storage: 16Gi
             nvidia.com/gpu: 1
@@ -78,7 +78,7 @@ spec:
             hostdev.k8s.io/dev_dri_renderD129: 1
             hostdev.k8s.io/dev_tty63: 1
           requests:
-            memory: "32Gi"
+            memory: "16Gi"
             ephemeral-storage: 16Gi
             cpu: "8"
             nvidia.com/gpu: 1
