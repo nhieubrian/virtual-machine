@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: isaacaip-root-vol
+  name: purpleaip-root-vol
   namespace : aip-ml
 spec:
   storageClassName: rook-ceph-block
