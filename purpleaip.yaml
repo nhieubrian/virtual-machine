@@ -38,7 +38,7 @@ spec:
       hostname: purpleaip
       containers:
       - name: purpleaip
-        image: gitlab-registry.nautilus.optiputer.net/monkeytang/purpleaip
+        image: gitlab-registry.nautilus.optiputer.net/aip_197_accchi/purple_nl/isaacaip:latest
         env:
         - name: TZ
           value: "America/Los_Angeles"
