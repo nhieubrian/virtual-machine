@@ -1,17 +1,17 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: isaacaip
+  name: purpleaip
   namespace : aip-ml
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: isaacaip
+      app: purpleaip
   template:
     metadata:
       labels:
-        app: isaacaip
+        app: purpleaip
     spec:
       nodeSelector:
         kubernetes.io/hostname: suncave-31
@@ -35,10 +35,10 @@ spec:
       - key: nautilus.io/nogltest
         effect: NoSchedule
         operator: Exists
-      hostname: isaacaip
+      hostname: purpleaip
       containers:
-      - name: isaacaip
-        image: gitlab-registry.nautilus.optiputer.net/monkeytang/isaacaip
+      - name: purpleaip
+        image: gitlab-registry.nautilus.optiputer.net/monkeytang/purpleaip
         env:
         - name: TZ
           value: "America/Los_Angeles"
@@ -57,7 +57,7 @@ spec:
         - name: VNCPASS
           valueFrom:
             secretKeyRef:
-              name: isaacaip-egl-pass
+              name: purpleaip-egl-pass
               key: password
         securityContext:
           capabilities:
@@ -89,15 +89,15 @@ spec:
             hostdev.k8s.io/dev_tty63: 1
         volumeMounts:
         - mountPath: /home/user
-          name: isaacaip-root-vol
+          name: purpleaip-root-vol
         - mountPath: /dev/dri
           name: drm
         - mountPath: /dev/shm
           name: dshm
       volumes:
-        - name: isaacaip-root-vol
+        - name: purpleaip-root-vol
           persistentVolumeClaim:
-            claimName: isaacaip-root-vol
+            claimName: purpleaip-root-vol
         - name: drm
           hostPath:
             path: /dev/dri
