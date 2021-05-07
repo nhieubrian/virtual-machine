@@ -1,4 +1,5 @@
-FROM gitlab-registry.nautilus.optiputer.net/prp/docker-nvidia-egl-desktop-18.04:latest
+#FROM gitlab-registry.nautilus.optiputer.net/prp/docker-nvidia-egl-desktop-18.04:latest
+FROM gitlab-registry.nautilus.optiputer.net/aip_197_accchi/purple_nl/docker-nvidia-glx-desktop:latest
 
 USER root
 
