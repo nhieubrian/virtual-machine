@@ -14,7 +14,7 @@ spec:
         app: purpleaip
     spec:
       nodeSelector:
-        kubernetes.io/hostname: suncave-15
+        kubernetes.io/hostname: suncave-20
       tolerations:
       - key: "region"
         operator: "Equal"
