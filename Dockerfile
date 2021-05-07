@@ -52,8 +52,8 @@ RUN curl -s -L https://github.com/bazelbuild/bazel/releases/download/3.1.0/bazel
     chmod +x bazel-3.1.0-installer-linux-x86_64.sh && \
     /bin/bash ./bazel-3.1.0-installer-linux-x86_64.sh
 
-COPY bootstrap.sh /bootstrap.sh
-RUN chmod 755 /bootstrap.sh
+#COPY bootstrap.sh /bootstrap.sh
+#RUN chmod 755 /bootstrap.sh
 
 
 RUN cd /usr/local/ && \
