@@ -6,6 +6,8 @@ Follow this guide, https://ucsd-prp.gitlab.io/userdocs/start/get-access/, to cre
 
 # Deployment
 
+## Make sure to delete the "Images" directory before deploying. This was only placed here to have a pictures in our readme.
+
 First, make edits based on the computing power needed:
 In the file, “purpleaip.yaml”, you will need to change the hostname to a server that is open and has the components needed. Check out, https://nautilus.optiputer.net/resources to see the most up to date information on the servers. 
 
