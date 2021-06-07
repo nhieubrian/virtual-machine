@@ -15,7 +15,7 @@ Currently, the .yaml file requires a total of 16gbs of memory available. This ca
 
 ![alt text](/images/isaac2.png)
 
-Changing the section, “memory:” and “ephemeral-storage:'' to 8, 16, 32 or 64Gi. Remember, change both sections! 
+Changing the section, “memory:” and “ephemeral-storage:'' to 8, 16, 32 or 64Gi. **Remember, change both sections! **
 
 
 The machine can be deployed by going to Dockerfile in the repo, making an edit, undoing the edit, and then committing.  This will automatically start a job that can be seen in CI/CD -> Jobs.  Its progress can be tracked from there.
@@ -25,8 +25,11 @@ The machine can be deployed by going to Dockerfile in the repo, making an edit, 
 # Opening the VM
 
 After the deployment is running, you can open https://purpleaip.nautilus.optiputer.net in a browser, click “connect” and login with the credentials.  The default credentials we have set are
+
 Username: purpleaip
+
 Password: purpleaip 
+
 
 # Running things
 
