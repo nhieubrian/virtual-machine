@@ -19,8 +19,11 @@ The machine can be deployed by going to Dockerfile in the repo, making an edit, 
 # Opening the VM
 
 After the deployment is running, you can open https://purpleaip.nautilus.optiputer.net in a browser, click “connect” and login with the credentials.  The default credentials we have set are
+
 Username: purpleaip
+
 Password: purpleaip 
+
 
 # Running things
 
