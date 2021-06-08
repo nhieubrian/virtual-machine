@@ -1,3 +1,5 @@
+*Note: This readme and repository was created in junction with 2 other AIP 197 students and John Graham*
+
 # Installation:
 
 Head over to https://kubernetes.io/docs/tasks/tools/ and install K8S based on your OS
